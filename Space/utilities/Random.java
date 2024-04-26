@@ -1,4 +1,4 @@
-package Space.Utilities;
+package Space.utilities;
 
 public class Random {
     public static double random(int deviation) {

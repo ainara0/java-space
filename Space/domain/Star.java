@@ -1,4 +1,4 @@
-package Space.Domain;
+package Space.domain;
 
 public class Star {
 }

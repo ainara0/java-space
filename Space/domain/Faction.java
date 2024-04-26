@@ -1,4 +1,4 @@
-package Space.Domain;
+package Space.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ public class Faction {
     private int combinedIntelligence;
     private int combinedStrength;
     private int development;
-    private static List<Faction> fations = new ArrayList<Faction>();
+    private static List<Faction> factions = new ArrayList<Faction>();
     private List<LifeForm> lifeForms = new ArrayList<LifeForm>();
 
 
