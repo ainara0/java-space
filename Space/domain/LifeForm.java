@@ -14,6 +14,7 @@ public class LifeForm {
     private Faction faction;
     private List<Species> species;
     static private List<LifeForm> lifeForms = new ArrayList<LifeForm>();
+    private List<Tool> tools;
 
     public LifeForm(String name, int intelligence, int strength, Faction faction, List<Species> species) {
         this.name = name;
@@ -22,6 +23,7 @@ public class LifeForm {
         this.faction = faction;
         this.species = species;
         health = 100;
+        tools = new ArrayList<Tool>;
     }
     public LifeForm(String name, List<Species> species, Faction faction) {
         Random r = new Random();
@@ -53,6 +55,9 @@ public class LifeForm {
     public static List<LifeForm> getLifeForms() {
         return new ArrayList<LifeForm>(lifeForms);
     }
+    public List<Tool> getTools() {
+        return tools;
+    }
     public void damage(int amount) {
         health -= amount;
     }
@@ -62,9 +67,19 @@ public class LifeForm {
     public void die(){
         lifeForms.remove(this);
         faction.removeFromFaction(this);
+        for (Species s : species) {
+            s.removeLifeForm(this);
+        }
     }
     public void joinFaction(Faction faction) {
         this.faction = faction;
         faction.addToFaction(this);
+    }
+    public void obtainTool(Tool tool) {
+        tools.add(tool);
+        tool.setOwner(this);
+    }
+    public void loseTool(Tool tool) {
+        tools.remove(tool);
     }
 }

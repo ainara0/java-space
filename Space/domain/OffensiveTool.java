@@ -1,9 +1,43 @@
 package Space.domain;
 
-public class OffensiveTool {
+import java.util.Random;
+
+public class OffensiveTool implements Tool {
     private int damage;
     private int durability;
+    private LifeForm owner;
+
+    public OffensiveTool(LifeForm lifeForm, Random r) {
+        owner = lifeForm;
+        damage = r.nextInt(10) + 1;
+        durability = r.nextInt(10) + 1;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getDurability() {
+        return durability;
+    }
+
+    public LifeForm getOwner() {
+        return owner;
+    }
+
     public void use(LifeForm lifeForm){
         lifeForm.damage(damage);
+        durability -= 1;
+        if (durability == 0) {
+            this.shatter();
+        }
+    }
+    public void shatter() {
+
+    }
+
+    @Override
+    public void seize() {
+
     }
 }

@@ -13,7 +13,7 @@ public class Planet extends CelestialBody{
     public List<Faction> getFactions() {
         return factions;
     }
-    public boolean habitable(){
+    public boolean habitable() {
         return temperature > -10 && temperature < 50 && mass < 7000;
     }
     public void addFaction(Faction faction) {
@@ -22,6 +22,7 @@ public class Planet extends CelestialBody{
     public void removeFaction(Faction faction) {
         factions.remove(faction);
     }
+
     @Override
     void explode() {
     }

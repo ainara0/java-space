@@ -2,14 +2,33 @@ package Space.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Species {
-    private String name;
-    private int intelligenceModifier;
-    private int strengthModifier;
-    private int age;
+    private final String name;
+    private final int intelligenceModifier;
+    private final int strengthModifier;
     private static List<Species> species = new ArrayList<Species>();
     private List<LifeForm> lifeForms = new ArrayList<LifeForm>();
+
+    public Species(String name, Random r) {
+        this.name = name;
+        intelligenceModifier = r.nextInt(10);
+        strengthModifier = r.nextInt(10);
+        species.add(this);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getIntelligenceModifier() {
+        return intelligenceModifier;
+    }
+
+    public int getStrengthModifier() {
+        return strengthModifier;
+    }
 
     public List<LifeForm> getLifeForms() {
         return new ArrayList<LifeForm>(lifeForms);
@@ -19,5 +38,11 @@ public class Species {
     }
     public boolean extinct() {
         return lifeForms.isEmpty();
+    }
+    public void addLifeForm(LifeForm lifeForm) {
+        lifeForms.add(lifeForm);
+    }
+    public void removeLifeForm(LifeForm lifeForm) {
+        lifeForms.remove(lifeForm);
     }
 }
