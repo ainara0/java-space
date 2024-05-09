@@ -23,7 +23,7 @@ public class LifeForm {
         this.faction = faction;
         this.species = species;
         health = 100;
-        tools = new ArrayList<Tool>;
+        tools = new ArrayList<Tool>();
     }
     public LifeForm(String name, List<Species> species, Faction faction) {
         Random r = new Random();

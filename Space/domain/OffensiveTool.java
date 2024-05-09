@@ -12,19 +12,18 @@ public class OffensiveTool implements Tool {
         damage = r.nextInt(10) + 1;
         durability = r.nextInt(10) + 1;
     }
-
     public int getDamage() {
         return damage;
     }
-
     public int getDurability() {
         return durability;
     }
-
     public LifeForm getOwner() {
         return owner;
     }
-
+    public void setOwner(LifeForm owner) {
+        this.owner = owner;
+    }
     public void use(LifeForm lifeForm){
         lifeForm.damage(damage);
         durability -= 1;
@@ -33,11 +32,8 @@ public class OffensiveTool implements Tool {
         }
     }
     public void shatter() {
-
     }
-
     @Override
     public void seize() {
-
     }
 }
