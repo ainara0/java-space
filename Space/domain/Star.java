@@ -15,6 +15,19 @@ public class Star extends CelestialBody{
         this.temperature = r.nextInt(47500) + 2501;
     }
     @Override
+    public String toString() {
+        return "Star{" +
+                "brightness=" + brightness +
+                ", name='" + name + '\'' +
+                ", identifier='" + identifier + '\'' +
+                ", radius=" + radius +
+                ", mass=" + mass +
+                ", temperature=" + temperature +
+                ", composition='" + composition + '\'' +
+                ", orbit=" + this.getOrbitString() +
+                '}';
+    }
+    @Override
     void explode() {
         for (CelestialBody body : orbit) {
             body.pullToBlackHole();

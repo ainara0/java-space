@@ -17,7 +17,6 @@ public class Species {
         strengthModifier = r.nextInt(10);
         species.add(this);
     }
-
     public String getName() {
         return name;
     }
@@ -35,6 +34,15 @@ public class Species {
     }
     public static List<Species> getSpecies() {
         return new ArrayList<Species>(species);
+    }
+    @Override
+    public String toString() {
+        return "Species{" +
+                "name='" + name + '\'' +
+                ", intelligenceModifier=" + intelligenceModifier +
+                ", strengthModifier=" + strengthModifier +
+                ", lifeForms=" + lifeForms +
+                '}';
     }
     public boolean extinct() {
         return lifeForms.isEmpty();

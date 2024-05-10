@@ -1,16 +1,19 @@
 package Space.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class HealingTool implements Tool {
     private int healing;
     private int durability;
-    private LifeForm owner;
+    private Faction owner;
+    private static List<HealingTool> healingTools = new ArrayList<HealingTool>();
 
-    public HealingTool(LifeForm lifeForm, Random r) {
-        owner = lifeForm;
+    public HealingTool(Random r) {
         healing = r.nextInt(10) + 1;
         durability = r.nextInt(10) + 1;
+        healingTools.add(this);
     }
     public int getHealing() {
         return healing;
@@ -18,12 +21,16 @@ public class HealingTool implements Tool {
     public int getDurability() {
         return durability;
     }
-    public LifeForm getOwner() {
+    public Faction getOwner() {
         return owner;
     }
-    public void setOwner(LifeForm owner) {
+    public void setOwner(Faction owner) {
+        /*
         this.owner = owner;
+        Faction.obtainHealingTool(this);
+        */
     }
+
     public void use(LifeForm lifeForm){
         lifeForm.heal(healing);
         durability -= 1;
@@ -31,8 +38,10 @@ public class HealingTool implements Tool {
             this.shatter();
         }
     }
+
+    @Override
     public void shatter() {
-        owner.loseTool(this);
+        // owner.loseTool(this);
     }
 
     @Override

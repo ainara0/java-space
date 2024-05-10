@@ -33,6 +33,7 @@ public class LifeForm {
         this.species = species;
         this.faction = faction;
         health = 100;
+        this.tools =  new ArrayList<Tool>();
     }
     public String getName() {
         return name;
@@ -58,6 +59,18 @@ public class LifeForm {
     public List<Tool> getTools() {
         return tools;
     }
+    @Override
+    public String toString() {
+        return "LifeForm{" +
+                "name='" + name + '\'' +
+                ", intelligence=" + intelligence +
+                ", strength=" + strength +
+                ", health=" + health +
+                ", faction=" + faction +
+                ", species=" + species +
+                ", tools=" + tools +
+                '}';
+    }
     public void damage(int amount) {
         health -= amount;
     }
@@ -76,8 +89,10 @@ public class LifeForm {
         faction.addToFaction(this);
     }
     public void obtainTool(Tool tool) {
+        /*
         tools.add(tool);
         tool.setOwner(this);
+         */
     }
     public void loseTool(Tool tool) {
         tools.remove(tool);

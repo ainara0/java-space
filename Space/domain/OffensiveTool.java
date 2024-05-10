@@ -31,7 +31,9 @@ public class OffensiveTool implements Tool {
             this.shatter();
         }
     }
+    @Override
     public void shatter() {
+        owner.loseTool(this);
     }
     @Override
     public void seize() {

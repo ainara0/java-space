@@ -11,6 +11,7 @@ public class Faction {
     private List<LifeForm> allies;
     private List<LifeForm> enemies;
     private List<Planet> colonies;
+    private List<HealingTool> healingTools = new ArrayList<HealingTool>();
 
     public Faction(String name) {
         this.name = name;
@@ -19,6 +20,7 @@ public class Faction {
         allies = new ArrayList<LifeForm>();
         enemies = new ArrayList<LifeForm>();
         colonies = new ArrayList<Planet>();
+        healingTools = new ArrayList<HealingTool>();
         factions.add(this);
     }
     public String getName() {
@@ -72,6 +74,18 @@ public class Faction {
     public int getAverageHealth(){
         return getCombinedHealth() / members.size();
     }
+    @Override
+    public String toString() {
+        return "Faction{" +
+                "name='" + name + '\'' +
+                ", development=" + development +
+                ", members=" + members +
+                ", allies=" + allies +
+                ", enemies=" + enemies +
+                ", colonies=" + colonies +
+                ", healingTools=" + healingTools +
+                '}';
+    }
     public boolean empty() {
         return members.isEmpty();
     }
@@ -81,7 +95,7 @@ public class Faction {
     void removeFromFaction(LifeForm member) {
         members.remove(member);
     }
-    public int colonise(Planet planet){
+    public int colonise(Planet planet){ //experimental
         if(!planet.getFactions().isEmpty()) {
             return 1;
         } else if (colonies.contains(planet)) {
@@ -90,12 +104,11 @@ public class Faction {
         planet.addFaction(this);
         return 0;
     }
-    public boolean declareWar(Faction faction) {
-        return true;
-    }
-    public void attack(Faction enemy){
-    }
     public void leavePlanet(Planet planet) {
         colonies.remove(planet);
     }
+    public void obtainHealingTool(HealingTool tool) {
+        this.healingTools.add(tool);
+    }
+    // Methods to add : declareWar, attack, disband
 }

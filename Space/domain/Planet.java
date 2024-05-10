@@ -28,6 +28,19 @@ public class Planet extends CelestialBody{
         factions.remove(faction);
     }
     @Override
+    public String toString() {
+        return "Planet{" +
+                "factions=" + factions +
+                ", name='" + name + '\'' +
+                ", identifier='" + identifier + '\'' +
+                ", radius=" + radius +
+                ", mass=" + mass +
+                ", temperature=" + temperature +
+                ", composition='" + composition + '\'' +
+                ", orbit=" + this.getOrbitString() +
+                '}';
+    }
+    @Override
     void explode() {
         for (Faction faction : factions) {
             faction.leavePlanet(this);
