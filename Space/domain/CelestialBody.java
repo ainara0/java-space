@@ -59,7 +59,7 @@ abstract class CelestialBody {
     public static List<CelestialBody> getCelestialBodies() {
         return celestialBodies;
     }
-    public String getOrbitString() {
+    public String getOrbitNames() {
         List<String> orbitString = new ArrayList<String>(orbit.size());
         for (CelestialBody body : orbit) {
             orbitString.add(body.getName());

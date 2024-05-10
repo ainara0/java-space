@@ -18,7 +18,7 @@ public class Main {
         speciesArrayList.add(humans);
         LifeForm alice = new LifeForm("Alice", speciesArrayList,first);
         System.out.println(alice.toString());
-        Star sun = new Star("Sun","Sol","Gas",r);
+        Star sun = new Star("Sun","893","Gas",r);
         Planet earth = new Planet("Earth","1","Water",r);
         Planet mars = new Planet("Mars","23","FIRE",r);
         Planet pluto = new Planet("Pluto","138","Air",r);
@@ -30,5 +30,6 @@ public class Main {
         System.out.println(earth.toString());
         System.out.println(mars.toString());
         System.out.println(pluto.toString());
+        Menu.welcomeMenu();
     }
 }

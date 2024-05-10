@@ -24,7 +24,7 @@ public class Star extends CelestialBody{
                 ", mass=" + mass +
                 ", temperature=" + temperature +
                 ", composition='" + composition + '\'' +
-                ", orbit=" + this.getOrbitString() +
+                ", orbit=" + this.getOrbitNames() +
                 '}';
     }
     @Override

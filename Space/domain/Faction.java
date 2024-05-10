@@ -8,8 +8,7 @@ public class Faction {
     private int development;
     private static List<Faction> factions = new ArrayList<Faction>();
     private List<LifeForm> members;
-    private List<LifeForm> allies;
-    private List<LifeForm> enemies;
+    private List<Faction> allies;
     private List<Planet> colonies;
     private List<HealingTool> healingTools = new ArrayList<HealingTool>();
 
@@ -17,8 +16,7 @@ public class Faction {
         this.name = name;
         development = 0;
         members = new ArrayList<LifeForm>();
-        allies = new ArrayList<LifeForm>();
-        enemies = new ArrayList<LifeForm>();
+        allies = new ArrayList<Faction>();
         colonies = new ArrayList<Planet>();
         healingTools = new ArrayList<HealingTool>();
         factions.add(this);
@@ -35,11 +33,8 @@ public class Faction {
     public List<LifeForm> getMembers() {
         return members;
     }
-    public List<LifeForm> getAllies() {
+    public List<Faction> getAllies() {
         return allies;
-    }
-    public List<LifeForm> getEnemies() {
-        return enemies;
     }
     public List<Planet> getColonies() {
         return colonies;
@@ -81,7 +76,6 @@ public class Faction {
                 ", development=" + development +
                 ", members=" + members +
                 ", allies=" + allies +
-                ", enemies=" + enemies +
                 ", colonies=" + colonies +
                 ", healingTools=" + healingTools +
                 '}';
@@ -95,20 +89,23 @@ public class Faction {
     void removeFromFaction(LifeForm member) {
         members.remove(member);
     }
-    public int colonise(Planet planet){ //experimental
-        if(!planet.getFactions().isEmpty()) {
-            return 1;
-        } else if (colonies.contains(planet)) {
-            return 2;
-        }
+    public void colonise(Planet planet){
         planet.addFaction(this);
-        return 0;
     }
     public void leavePlanet(Planet planet) {
         colonies.remove(planet);
     }
     public void obtainHealingTool(HealingTool tool) {
         this.healingTools.add(tool);
+    }
+    public void becomeAllies(Faction faction) {
+        allies.add(faction);
+    }
+    public void disband() {
+        for (LifeForm lifeForm : members) {
+            lifeForm.leaveFaction();
+        }
+        factions.remove(this);
     }
     // Methods to add : declareWar, attack, disband
 }

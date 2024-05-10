@@ -88,6 +88,9 @@ public class LifeForm {
         this.faction = faction;
         faction.addToFaction(this);
     }
+    public void leaveFaction() {
+        this.faction = null;
+    }
     public void obtainTool(Tool tool) {
         /*
         tools.add(tool);
