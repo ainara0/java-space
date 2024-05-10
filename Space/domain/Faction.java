@@ -10,6 +10,7 @@ public class Faction {
     private List<LifeForm> members;
     private List<LifeForm> allies;
     private List<LifeForm> enemies;
+    private List<Planet> colonies;
 
     public Faction(String name) {
         this.name = name;
@@ -17,6 +18,7 @@ public class Faction {
         members = new ArrayList<LifeForm>();
         allies = new ArrayList<LifeForm>();
         enemies = new ArrayList<LifeForm>();
+        colonies = new ArrayList<Planet>();
         factions.add(this);
     }
     public String getName() {
@@ -36,6 +38,9 @@ public class Faction {
     }
     public List<LifeForm> getEnemies() {
         return enemies;
+    }
+    public List<Planet> getColonies() {
+        return colonies;
     }
     public int getCombinedIntelligence(){
         int combinedIntelligence = 0;
@@ -76,16 +81,21 @@ public class Faction {
     void removeFromFaction(LifeForm member) {
         members.remove(member);
     }
-    public boolean colonise(Planet planet){
-        if(planet.getFactions().isEmpty()) {
-            planet.addFaction(this);
-            return true;
+    public int colonise(Planet planet){
+        if(!planet.getFactions().isEmpty()) {
+            return 1;
+        } else if (colonies.contains(planet)) {
+            return 2;
         }
-        return false;
+        planet.addFaction(this);
+        return 0;
     }
     public boolean declareWar(Faction faction) {
         return true;
     }
     public void attack(Faction enemy){
+    }
+    public void leavePlanet(Planet planet) {
+        colonies.remove(planet);
     }
 }
